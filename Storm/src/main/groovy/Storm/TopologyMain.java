@@ -2,6 +2,7 @@ package Storm;
 
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
+import org.apache.storm.StormSubmitter;
 import org.apache.storm.generated.StormTopology;
 import org.apache.storm.thrift.TException;
 import org.apache.storm.topology.TopologyBuilder;
@@ -20,7 +21,7 @@ public class TopologyMain {
 
         LocalCluster localCluster = new LocalCluster();
         try {
-            localCluster.submitTopology("Stock-Tracker-Topology", config, topology);
+            StormSubmitter.submitTopology("Stock-Tracker-Topology", config, topology);
             Thread.sleep(10000);
         } finally {
             localCluster.shutdown();
